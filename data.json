@@ -1,0 +1,74 @@
+{
+    "city": "Львів",
+    "routes": [{
+        "route_name": "Шота Руставелі - Санта-Барбара",
+        "route_number": 24,
+        "type_of_transport": "Тролейбус",
+        "low_floor_vehicles": true,
+        "interval":{
+            "weekends": 15,
+            "weekdays": 10
+        },
+        "stops":[
+            {
+                "name": "Шота Руставелі",
+                "latitude": 49.8312,
+                "longitude": 24.0343
+            },
+            {
+                 "name": "Санта-Барбара",
+                "latitude": 49.7797,
+                "longitude": 24.0655
+            }
+
+        ]
+    },
+    {
+        "route_name": "Залізничний вокзал - Погулянка",
+        "route_number": 1,
+        "type_of_transport": "Трамвай",
+        "low_floor_vehicles": false,
+        "interval":{
+            "weekends": 13,
+            "weekdays": 11
+        },
+        "stops":[
+            {
+                "name": "Залізничний вокзал",
+                "latitude": 49.8397,
+                "longitude": 24.0001
+            },
+            {
+                 "name": "Погулянка",
+                "latitude": 49.8219,
+                "longitude": 24.0671
+            }
+
+        ]
+    },
+    {
+        "route_name": "Площа Різні - Кінг Крос Леополіс",
+        "route_number": 3,
+        "type_of_transport": "Автобуc",
+        "low_floor_vehicles": true,
+        "interval":{
+            "weekends": null,
+            "weekdays": 11
+        },
+        "stops":[
+            {
+                "name": "Площа Різні",
+                "latitude": 49.8458,
+                "longitude": 24.0255
+            },
+            {
+                 "name": "Кінг Крос Леополіс",
+                "latitude": 49.7739,
+                "longitude": 24.0116
+            }
+
+        ]
+    }
+    ]
+
+}
