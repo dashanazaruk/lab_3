@@ -84,5 +84,48 @@ program
     console.log(current === null ? 'null (значення порожнє)' : JSON.stringify(current));
 });
 
+program
+.command('stops')
+.description('показати зупинки маршруту')
+.argument('<number>', 'номер маршруту')
+.option('-c, --coords', 'показати координати зупинок')
+.action((number, options) => {
+    const route = findRoute(loadData(program.opts().file), number);
+    route.stops.forEach((s, i) => {
+        const coords = options.coords ? ` (${s.latitude}, ${s.longitude})` : '';
+        console.log(`${i + 1}. ${s.name}${coords}`);
+    });
+});
+
+program
+.command('interval')
+.description('показати інтервал руху маршруту')
+.argument('<number>', 'номер маршруту')
+.argument('<day>', 'тип дня: weekdays (будні) або weekends (вихідні)')
+.action((number, day) => {
+    if (day !== 'weekdays' && day !== 'weekends') {
+        fail('день має бути weekdays або weekends');
+    }
+    const route = findRoute(loadData(program.opts().file), number);
+    const value = route.interval[day];
+    if (value === null) {
+        console.log(`Маршрут №${route.route_number} у цей день не курсує`);
+    } else {
+        console.log(`Інтервал: ${value} хв`);
+    }
+});
+
+program
+.command('low-floor')
+.description('показати маршрути з низькопідлоговими машинами')
+.action(() => {
+    const found = loadData(program.opts().file).routes.filter((r) => r.low_floor_vehicles);
+    if (found.length === 0) {
+        console.log('Таких маршрутів немає');
+    }
+    for (const r of found) {
+        console.log(`№${r.route_number} | ${r.type_of_transport} | ${r.route_name}`);
+    }
+});
 
 program.parse();
